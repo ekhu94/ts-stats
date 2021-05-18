@@ -7,4 +7,15 @@ const matches = fs
   .split('\n')
   .map((row: string): string[] => row.split(','));
 
-console.log(matches);
+let newCastleWins = 0;
+
+for (let match of matches) {
+  if (match[1] === 'Newcastle' && match[5] === 'H') {
+    newCastleWins++;
+  }
+  if (match[2] === 'Newcastle' && match[5] === 'A') {
+    newCastleWins++;
+  }
+}
+
+console.log(`Newcastle won ${newCastleWins} games`);
