@@ -4,13 +4,21 @@ import { MatchResults } from './MatchResults';
 import { stringDateToDate } from './utilities';
 
 // TUPLE
-type MatchData = [Date, string, string, number, number, MatchResults, string];
+export type MatchData = [
+  Date,
+  string,
+  string,
+  number,
+  number,
+  MatchResults,
+  string
+];
 
-export abstract class CsvFileReader {
-  data: MatchData[] = [];
+export abstract class CsvFileReader<T> {
+  data: T[] = [];
 
   constructor(public filename: string) {}
-  abstract mapRow(row: string[]): MatchData;
+  abstract mapRow(row: string[]): T;
 
   read(): void {
     this.data = fs
